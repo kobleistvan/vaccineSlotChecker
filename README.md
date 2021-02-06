@@ -42,7 +42,7 @@ This was created because of 3 reasons:
 
 ### Success! We're logged in, so now, we can use the API call to search for free vaccination slots.
 - The script checks for slots every 10 minutes & sends the data to a Blynk server from where tha data can be read easily via the Blynk app.
-- 10 minutes is enough to keep the client session valid & not too frequent to create problems on the server. Don't be an ass!
+- 10 minutes is enough to keep the client session valid & not too frequent to create problems on the server. ***Don't be an ass!***
 - The script logs out every 6 hours, after which the other context script attempts to log back in again. This way we refresh the server session which normally expires after 12 hours.
 
 ![alt](./screenshots/loggedIn.PNG)
