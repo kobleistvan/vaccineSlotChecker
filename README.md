@@ -16,21 +16,21 @@ This was created because of 3 reasons:
 # Screenshots & technical caveats
 
 ### Clone this repo & go to Chrome -> Extension and load it in via the 'Load unpacked' button. Developer mode needs to be on.
-![alt](./screenshots/loadExtension.png)
+![alt](./screenshots/loadExtension.PNG)
 
 ### These are the extension details & permissions needed
-![alt](./screenshots/extension.png)
+![alt](./screenshots/extension.PNG)
 
 ### You can click on the extension icon anytime, but the popup panel will only show up when we're on the https://programare.vaccinare-covid.gov.ro/ webpage.
 - There's no reason for it to be accessible anywhere else.
 
-![alt](./screenshots/popupEmpty.png)
+![alt](./screenshots/popupEmpty.PNG)
 
 ### We add the username & password with which we log normally in and our blynk server and token.
 - The Pause / Start button is in order to pause the extension. Sometimes you don't want it to run.
 - All changes are saved to a cookie when you press the Save button.
 
-![alt](./screenshots/popupCensored.png)
+![alt](./screenshots/popupCensored.PNG)
 
 ### The script automatically tries log in
 - It attempts to fill in the form data by manipulating the __ __ngContext__ __ via an injected script.
@@ -45,7 +45,7 @@ This was created because of 3 reasons:
 - 10 minutes is enough to keep the client session valid & not too frequent to create problems on the server. Don't be an ass!
 - The script logs out every 6 hours, after which the other context script attempts to log back in again. This way we refresh the server session which normally expires after 12 hours.
 
-![alt](./screenshots/loggedin.png)
+![alt](./screenshots/loggedin.PNG)
 
 ---
 
@@ -53,16 +53,16 @@ This was created because of 3 reasons:
 - If you are using the official Blynk cloud server, then disregard the following 4 screenshots & jump to the end. Otherwise, keep on reading:
 - The reason we're getting this error, is because the webpage is served via HTTPS, but we're making a request to a non-secure Blynk server.
 
-![alt](./screenshots/securityError.png)
+![alt](./screenshots/securityError.PNG)
 
 ### Click on the 'Not secure' button on the left of the URL & go to __Site settings__
-![alt](./screenshots/security.png)
+![alt](./screenshots/security.PNG)
 
 ### Scroll down to __Insecure content__ and change it to __Allow__ & then save the settings and reload the page.
-![alt](./screenshots/siteSettings.png)
+![alt](./screenshots/siteSettings.PNG)
 
 ### The script will run & after 10 minutes, instead of an error, only a warning will appear.
-![alt](./screenshots/mixedContent.png)
+![alt](./screenshots/mixedContent.PNG)
 
 ---
 
