@@ -45,7 +45,7 @@ This was created because of 3 reasons:
 - 10 minutes is enough to keep the client session valid & not too frequent to create problems on the server. Don't be an ass!
 - The script logs out every 6 hours, after which the other context script attempts to log back in again. This way we refresh the server session which normally expires after 12 hours.
 
-![alt](./screenshots/loggedin.PNG)
+![alt](./screenshots/loggedIn.PNG)
 
 ---
 
