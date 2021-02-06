@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <style type="text/css">
+        body {
+            margin: 10px;
+            white-space: nowrap;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 15px;
+        }
+
+        #container {
+            align-items: center;
+            display: block;
+            justify-content: space-between;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <h1>Vaccination Slot Checker</h1>
+        <div>
+            <h2>Site credentials</h2>
+            <input id="username" type="text" placeholder="Username">
+            <input id="password" type="password" placeholder="Password">
+        </div>
+        <div>
+            <h2>Blynk token</h2>
+            <input id="server" type="text" placeholder="Blynk server domain">
+            <input id="token" type="password" placeholder="Token">
+            <button id="save">Save</button>
+        </div>
+        <div>
+            <h2>Control</h2>
+            <button id="control">Pause</button>
+        </div>
+        <div style="margin-top: 20px;">
+            <a href="https://programare.vaccinare-covid.gov.ro/">https://programare.vaccinare-covid.gov.ro/</a>
+        </div>
+        <script src="popup.js" type="text/javascript"></script>
+    </body>
+
+</html>

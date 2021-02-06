@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+    "name": "Vaccination Slot Checker",
+    "version": "0.1",
+    "permissions": [
+        "tabs",
+        "https://*/*",
+        "activeTab",
+        "cookies"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "web_accessible_resources": [
+        "injectedLogger.js"
+    ],
+    "page_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html",
+        "default_title": "Vaccination Slot Checker"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://programare.vaccinare-covid.gov.ro/"
+            ],
+            "js": [
+                "slotChecker.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://programare.vaccinare-covid.gov.ro/auth/login"
+            ],
+            "js": [
+                "scriptInjector.js"
+            ]
+        }
+    ]
+}
