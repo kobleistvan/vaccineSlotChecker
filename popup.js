@@ -1,4 +1,4 @@
-console.log("Background script running...");
+console.log("Popup script running...");
 
 let data = getSavedData() || {
     status: false,
@@ -8,12 +8,14 @@ let data = getSavedData() || {
     token: ''
 };
 
+// Init method. This sums up what's happening.
 function init() {
     registerEventHandlers();
     populateFields();
     sendMessage(data);
 }
 
+// Register 2 event handlers. One for the 'control' (Start/Pause) button, the other for the 'save' button.
 function registerEventHandlers() {
     document.querySelector('#control').addEventListener('click', () => {
         data.status = !data.status;
@@ -35,15 +37,18 @@ function registerEventHandlers() {
     })
 }
 
+// Retrieves & parses the data saved in the cookie
 function getSavedData() {
     return JSON.parse(getCookie('vaccineCheckerData'));
 }
 
+// Save the data into a cookie & send a message with the data to the content scripts
 function saveData() {
     setCookie('vaccineCheckerData', JSON.stringify(data));
     sendMessage(data);
 }
 
+// Populates the input fields with the data previously saved on the cookie
 function populateFields() {
     document.querySelector('#control').innerHTML = data.status ? 'Pause' : 'Start';
     document.querySelector('#username').value = data.username || '';
@@ -52,13 +57,15 @@ function populateFields() {
     document.querySelector('#token').value = data.token || '';
 }
 
+// Sends a message to the content script
 function sendMessage(message) {
-    console.log('Sending data...');
+    console.log('Popup - Sending data...');
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, message);
     })
 }
 
+// Generic cookie setting function
 function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -69,6 +76,7 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
+// Generic cookie reading function
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');

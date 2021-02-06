@@ -1,7 +1,14 @@
 {
     "manifest_version": 2,
     "name": "Vaccination Slot Checker",
-    "version": "0.1",
+    "version": "1.0",
+    "description": "A chrome extension which automatically checks periodically for available vaccination slots in a specific vaccination center.",
+    "author": "Köble István",
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
     "permissions": [
         "tabs",
         "https://*/*",

@@ -1,3 +1,4 @@
+// Set the pageAction to show, when we get the trigger from the content script
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (typeof message === 'object' && message.type === 'showPageAction') {
         chrome.pageAction.show(sender.tab.id);
@@ -7,6 +8,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
 let data;
 
+// Try to retrieve the saved cookie data & send the data to the content script
 function init() {
     data = getSavedData() || {
         status: false,
@@ -21,6 +23,7 @@ function init() {
     }, 3000);
 }
 
+// Sends a message to the content script
 function sendMessage(message) {
     console.log('Background - Sending data...', message);
 
@@ -29,10 +32,12 @@ function sendMessage(message) {
     });
 }
 
+// Retrieves & parses the data saved in the cookie
 function getSavedData() {
     return JSON.parse(getCookie('vaccineCheckerData'));
 }
 
+// Generic cookie setting function
 function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -43,6 +48,7 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
+// Generic cookie reading function
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
