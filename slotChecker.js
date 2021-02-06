@@ -6,7 +6,6 @@ chrome.runtime.sendMessage({ type: 'showPageAction' });
 let data;
 let checkerIntervalId;
 let logoutIntervalId;
-let firstRunFlag = true;
 
 // Listen to messages & register handler
 chrome.runtime.onMessage.addListener(messageReceiver);
@@ -26,23 +25,24 @@ function messageReceiver(message, sender, sendresponse) {
 
     if (checkerIntervalId) {
         clearInterval(checkerIntervalId);
+        console.log('Cleared checkerIntervalId');
     }
 
     if (logoutIntervalId) {
         clearInterval(logoutIntervalId);
+        console.log('Cleared logoutIntervalId');
     }
 
     if (data && data.status) {
         // Check for slots every 10 minutes, so the session cookie doesn't expire
-        checkerIntervalId = setInterval(checkForSlots(), 1000 * 60 * 10);
+        checkerIntervalId = setInterval(checkForSlots, 1000 * 60 * 10);
 
         /**
          * Log out every 6 hours, so we can clear the session cookie from the client side, but also from
          * the server side, which by default expires after 12 hours. We set here an interval for 6 hours
          * to log out, after which we log in again with the other content script.
          */
-        firstRunFlag = true; // So we don't log out just as we start this setInterval :)
-        logoutIntervalId = setInterval(logOut(), 1000 * 60 * 60 * 6);
+        logoutIntervalId = setInterval(logOut, 1000 * 60 * 60 * 6);
     }
 }
 
@@ -71,13 +71,8 @@ function checkForSlots() {
         response.json().then(data => {
             if (data && data.content) {
                 const slots = data.content[0].availableSlots;
-                if (slots > 0) {
-                    fetch(blynkUrlBase + "/update/V50?value=" + timeShort)
-                    fetch(blynkUrlBase + "/update/V51?value=" + slots)
-                } else {
-                    fetch(blynkUrlBase + "/update/V50?value=" + timeShort)
-                    fetch(blynkUrlBase + "/update/V51?value=" + slots)
-                }
+                fetch(blynkUrlBase + "/update/V50?value=" + timeShort);
+                fetch(blynkUrlBase + "/update/V51?value=" + slots);
                 console.log('>>> ' + slots + ' slots available!');
             } else {
                 console.warn('NO CONTENT.');
@@ -90,14 +85,10 @@ function checkForSlots() {
  * Logs out. Opens the top-right menu & clicks on the logOut button, which will take us to the login page again.
  */
 function logOut() {
-    if (firstRunFlag) {
-        firstRunFlag = false;
-    } else {
-        setTimeout(() => {
-            document.querySelectorAll('button.user-button')[1].click();
-        }, 3000);
-        setTimeout(() => {
-            document.querySelector('form').querySelector('button').click();
-        }, 4000);
-    }
+    setTimeout(() => {
+        document.querySelectorAll('button.user-button')[1].click();
+    }, 3000);
+    setTimeout(() => {
+        document.querySelector('form').querySelector('button').click();
+    }, 4000);
 }
