@@ -7,7 +7,7 @@ setTimeout(() => {
 }, 5000);
 
 setTimeout(() => {
-    if (data && !data.status) {
+    if (data && data.status) {
         console.log('Filling out form values with the following data:', data);
         document.querySelector('form').__ngContext__[8].loginForm.controls.username.value = data.username;
         document.querySelector('form').__ngContext__[8].loginForm.controls.password.value = data.password;
@@ -18,7 +18,7 @@ setTimeout(() => {
 }, 6000)
 
 setTimeout(() => {
-    if (data && !data.status) {
+    if (data && data.status) {
         console.log('Attempting to log in...');
         document.querySelector('button').click();
     }
