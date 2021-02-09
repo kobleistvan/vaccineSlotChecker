@@ -27,7 +27,7 @@ function init() {
 function sendMessage(message) {
     console.log('Background - Sending data...', message);
 
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.query({ url: "https://programare.vaccinare-covid.gov.ro/*" }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, message);
     });
 }

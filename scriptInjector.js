@@ -39,6 +39,7 @@ function injectJs(link) {
     document.getElementsByTagName('head')[0].appendChild(scr)
 };
 
-// Inject our script which allows us to log in
-injectJs(chrome.extension.getURL('injectedLogger.js'))
-
+setTimeout(() => {
+    // Inject our script which allows us to log in
+    injectJs(chrome.extension.getURL('injectedLogger.js'))
+}, 5000);
