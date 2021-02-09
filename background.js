@@ -6,6 +6,11 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
 });
 
+// Disable tab discarding
+chrome.tabs.query({ url: "https://programare.vaccinare-covid.gov.ro/*" }, function (tabs) {
+    chrome.tabs.update(tabs[0].id, { autoDiscardable: false });
+});
+
 let data;
 
 // Try to retrieve the saved cookie data & send the data to the content script
