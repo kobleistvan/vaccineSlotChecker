@@ -13,6 +13,11 @@ This was created because of 3 reasons:
 2. To learn & mess around with Chrome Extensions
 3. Why not? :)
 
+## DISCLAIMER:
+- This solution has been outdated since a newer version of the vaccination platform came out & might not work anymore (but might still be useful for educational purposes).
+- Since that update, there exists a map on the landing page of the vaccination platform from where you can easily extract the number of available free slots in your preffered vaccination center. There is no need to try to bypass any CAPTCHA mechanism this way.
+- Also, later on, https://vaccin.live/ was also born, offering a free interactive map with the available slots country-wide. :)
+
 # Screenshots & technical caveats
 
 ### Clone this repo & go to Chrome -> Extension and load it in via the 'Load unpacked' button. Developer mode needs to be on.
